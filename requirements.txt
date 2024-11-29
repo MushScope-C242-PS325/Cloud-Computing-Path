@@ -1,8 +1,10 @@
 fastapi
 uvicorn
 firebase-admin
-pydantic
-email-validator
-python-multipart
 python-dotenv
+python-jose
+python-multipart
+passlib
+pydantic
+gunicorn
 httpx
