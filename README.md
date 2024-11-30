@@ -1,19 +1,15 @@
-# Firebase Authentication Service
+# Authentication Server Using FastAPI & Firebase 
 
-A Python-based authentication service utilizing Firebase for secure user management and authentication.
+Authentication Server Using FastAPI & Firebase
+🔐 A modern authentication server that combines the speed of FastAPI with the reliability of Firebase. Built for scalable applications requiring robust user management and secure file storage.
+
+⚡️ Why This Stack?
+FastAPI: Blazing fast performance with async support
+Firebase: Production-ready authentication and storage
+Python 3.8+: Modern Python features and type hints
+Swagger/ReDoc: Auto-generated API documentation
 
 
-## 🚀 Features
-- Firebase Authentication integration
-- Secure user management
-- File storage capabilities
-- Schema validation
-- Environment configuration
-
-## 🔧 Prerequisites
-- Python 3.8 or higher
-- Firebase project credentials
-- pip (Python package installer)
 
 ## 🛠️ Installation & Setup
 
@@ -22,7 +18,7 @@ A Python-based authentication service utilizing Firebase for secure user managem
    **For Windows:**
    ```bash
    # Create virtual environment
-   python -m venv venv
+   python -m venv your_venv_name
 
    # Activate virtual environment
    venv\Scripts\activate
@@ -31,7 +27,7 @@ A Python-based authentication service utilizing Firebase for secure user managem
    **For Linux/MacOS:**
    ```bash
    # Create virtual environment
-   python3 -m venv venv
+   python3 -m venv your_venv_name
 
    # Activate virtual environment
    source venv/bin/activate
@@ -44,13 +40,12 @@ A Python-based authentication service utilizing Firebase for secure user managem
 
 3. **Configure Environment Variables**
    
-   Create a `.env` file in the root directory with the following variables:
+   Create a `.env` file in the root directory:
    ```env
-   FIREBASE_API_KEY=your_api_key
-   FIREBASE_AUTH_DOMAIN=your_auth_domain
-   FIREBASE_PROJECT_ID=your_project_id
-   FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   FIREBASE_SERVICE_ACCOUNT_PATH=service/serviceKey.json
+   # Firebase Configuration
+   
+
+   # FastAPI Configuration
    ```
 
 4. **Firebase Service Account**
@@ -59,33 +54,63 @@ A Python-based authentication service utilizing Firebase for secure user managem
 
 ## 🏃‍♂️ Running the Application
 
-1. Ensure your virtual environment is activated
-2. Run the main application:
+1. **Development Server**
    ```bash
-   python main.py
+   # Run with default settings
+   uvicorn main:app --reload
+
+   # Run with custom host and port
+   uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+   ```
+
+2. **Production Server**
+   ```bash
+   # Run without reload
+   uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
    ```
 
 ## 📚 API Documentation
 
+Once the server is running, access the interactive API documentation:
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
+
 ### Authentication Endpoints
-- `/auth/register` - Register new user
-- `/auth/login` - User login
-- `/auth/logout` - User logout
+```python
+Method
+POST
+http://localhost:8000/register
+- Register new user
+- Body: {
+    "name": "User Name"
+    "email": "user@example.com",
+    "password": "securepassword"    
+}
 
-### Storage Operations
-- File upload/download functionality
-- Secure file storage management
+Method
+POST
+http://localhost:8000/login
+- User login
+- Body: {
+    "email": "user@example.com",
+    "password": "securepassword"
+}
 
-## 🔒 Security Notes
-- Keep your `.env` and `serviceKey.json` files secure and never commit them to version control
-- Implement proper authentication checks
-- Regular security updates and monitoring
+```
+
+
+## 🔒 Security Best Practices
+- Use HTTPS in production
+- Implement rate limiting
+- Keep `.env` and `serviceKey.json` secure
+- Regular dependency updates
+- Input validation using Pydantic models
+- Proper error handling
+
 
 ## 🤝 Contributing
 1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Submit a pull request
-
-## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a Pull Request
