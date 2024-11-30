@@ -1,13 +1,13 @@
-# Authentication Server Using FastAPI & Firebase 
+# Authentication API Using FastAPI & Firebase 
 
-Authentication Server Using FastAPI & Firebase
 🔐 A modern authentication server that combines the speed of FastAPI with the reliability of Firebase. Built for scalable applications requiring robust user management and secure file storage.
 
-⚡️ Why This Stack?
-FastAPI: Blazing fast performance with async support
-Firebase: Production-ready authentication and storage
-Python 3.8+: Modern Python features and type hints
-Swagger/ReDoc: Auto-generated API documentation
+## ⚡️ Why This Stack?
+- **FastAPI**: Blazing fast performance with async support
+- **Firebase**: Production-ready authentication and storage
+- **Python 3.8+**: Modern Python features and type hints
+- **Swagger/ReDoc**: Auto-generated API documentation
+
 
 
 
