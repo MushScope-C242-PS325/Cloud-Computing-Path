@@ -1,68 +1,59 @@
 # Authentication API Using FastAPI & Firebase 
 
+## 🛠️ Technologies Used
+- **FastAPI**: High-performance Python web framework for building APIs
+- **Visual Studio Code (VSCode)**: Integrated Development Environment (IDE) for development
+- **Python**: Primary programming language
+- **Postman**: API testing tool
+- **Firebase**: Authentication and storage service
 
-
-## ⚡️ Why This Stack?
-- **FastAPI**: Blazing fast performance with async support
-- **Firebase**: Production-ready authentication and storage
-- **Python 3.8+**: Modern Python features and type hints
-- **Swagger/ReDoc**: Auto-generated API documentation
-
-
-
+## 📝 Project Purpose
+This project aims to build an authentication API server that enables:
+- New user registration
+- User login process
+- Retrieving user profile information
+- Secure authentication using tokens
 
 ## 🛠️ Installation & Setup
-
 1. **Create and Activate Virtual Environment**
-
    **For Windows:**
    ```bash
    # Create virtual environment
    python -m venv your_venv_name
-
    # Activate virtual environment
    venv\Scripts\activate
    ```
-
    **For Linux/MacOS:**
    ```bash
    # Create virtual environment
    python3 -m venv your_venv_name
-
    # Activate virtual environment
    source venv/bin/activate
    ```
-
 2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-
 3. **Configure Environment Variables**
    
    Create a `.env` file in the root directory:
    ```env
    # Firebase Configuration
    
-
    # FastAPI Configuration
    ```
-
 4. **Firebase Service Account**
    
    Place your Firebase `serviceKey.json` in the `service/` directory.
 
 ## 🏃‍♂️ Running the Application
-
 1. **Development Server**
    ```bash
    # Run with default settings
    uvicorn main:app --reload
-
    # Run with custom host and port
    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
    ```
-
 2. **Production Server**
    ```bash
    # Run without reload
@@ -70,7 +61,6 @@
    ```
 
 ## 📚 API Documentation
-
 Once the server is running, access the interactive API documentation:
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
@@ -96,8 +86,12 @@ http://localhost:8000/login
     "password": "securepassword"
 }
 
+Method
+GET
+http://localhost:8000/userProfile
+- User Profile
+- Authorization: Bearer <your_token>
 ```
-
 
 ## 🔒 Security Best Practices
 - Use HTTPS in production
@@ -106,11 +100,3 @@ http://localhost:8000/login
 - Regular dependency updates
 - Input validation using Pydantic models
 - Proper error handling
-
-
-## 🤝 Contributing
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -am 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a Pull Request
