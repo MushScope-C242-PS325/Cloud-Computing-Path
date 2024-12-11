@@ -1,5 +1,5 @@
 # 🔐 Authentication API 🚀
-## API Server for user authentication in the MushScope application
+## API Server for User Authentication in the MushScope Application
 
 ---
 
