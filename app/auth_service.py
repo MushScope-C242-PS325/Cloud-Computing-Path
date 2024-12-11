@@ -1,13 +1,13 @@
 import os
 import logging
 import uuid
-from typing import Optional
 import requests
+from typing import Optional
 from fastapi import HTTPException, status, UploadFile
 from firebase_admin import auth
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
-
+from .storage import StorageService
 from .schemas import (
     UserRegister,
     UserLogin,
@@ -17,7 +17,6 @@ from .schemas import (
     ProfileResponse,
     ErrorResponse,
 )
-from .storage import StorageService
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -58,6 +57,7 @@ class AuthService:
             decoded_token = auth.verify_id_token(token)
             logger.info("Token verified successfully")
             return decoded_token['uid']
+            
         except auth.InvalidIdTokenError:
             logger.error("Invalid token error")
             raise HTTPException(
@@ -67,6 +67,7 @@ class AuthService:
                     message="Invalid token"
                 ).model_dump()
             )
+            
         except auth.ExpiredIdTokenError:
             logger.error("Token expired error")
             raise HTTPException(
@@ -76,6 +77,7 @@ class AuthService:
                     message="Token has expired"
                 ).model_dump()
             )
+            
         except Exception as e:
             logger.error(f"Token verification error: {str(e)}")
             raise HTTPException(
@@ -208,8 +210,10 @@ class AuthService:
                 try:
                     logger.info("Uploading profile photo")
                     file_extension = os.path.splitext(photo.filename)[1]
+                    
                     photo_path = f"profile_photos/{str(uuid.uuid4())}{file_extension}"
                     photo_url = await self.storage_service.upload_file(photo, photo_path)
+                    
                     logger.info(f"Photo uploaded successfully: {photo_url}")
                 except Exception as e:
                     logger.error(f"Photo upload error: {str(e)}")
