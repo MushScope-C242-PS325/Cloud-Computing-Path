@@ -10,8 +10,8 @@ class UserRegister(BaseModel):
 
     @validator('name')
     def validate_name(cls, v):
-        if not v or len(v.strip()) < 2:
-            raise ValueError('Name must be at least 2 characters long')
+        if not v or len(v.strip()) < 1:
+            raise ValueError('Name is required and cannot be left empty')
         return v.strip()
 
     @validator('email')
@@ -22,8 +22,8 @@ class UserRegister(BaseModel):
 
     @validator('password')
     def validate_password(cls, v):
-        if len(v) < 6:
-            raise ValueError('Password must be at least 6 characters long')
+        if len(v) < 8:
+            raise ValueError('Password must be at least 8 characters long')
         return v
 
 class UserLogin(BaseModel):
