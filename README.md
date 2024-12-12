@@ -13,14 +13,12 @@
 </div>
 
 ## 📝 Project Purpose
-🎯 **Your Ultimate Authentication Solution**
 
 This project is designed to provide a robust, secure, and efficient authentication system with:
 - 🔒 Secure user registration
 - 🔑 Seamless login process
 - 👤 Comprehensive user profile management
 - 🛡️ Token-based authentication
-- 🚦 Advanced security protocols
 
 ## 🛠️ Installation & Setup
 
